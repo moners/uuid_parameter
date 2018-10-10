@@ -1,6 +1,5 @@
 require "active_record"
 require "uuid_parameter"
-#require "uuid_parameter/uuid_version4_validator"
 
 # ActiveRecord::Base.logger = Logger.new(STDOUT)
 ActiveRecord::Base.establish_connection(adapter: "sqlite3", database: ":memory:")
@@ -17,4 +16,7 @@ ActiveRecord::Schema.define do
 end
 
 RSpec.configure do |config|
+  config.before(:each) do
+    ActiveRecord::Base.connection.execute("DELETE FROM users WHERE 1 = 1;")
+  end
 end

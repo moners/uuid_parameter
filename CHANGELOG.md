@@ -8,7 +8,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-Nothing yet. Maybe open an issue?
+- fix I18n
+
+## 0.2.0 - 2018-10-10
+
+- Fix bug when existing records had NULL values
+- Refactor out the validator class to simplify code
+- Make specifications clearer
+- Prepare for I18n
 
 ## 0.1.0 - 2018-09-19
 
@@ -16,5 +23,5 @@ Initial release.
 
 [CHANGELOG.md]: ./CHANGELOG.md
 [LICENSE]: ./LICENSE
-[Unreleased]: /../compare/v0.1.0...HEAD
-
+[Unreleased]: /../compare/v0.2.0...HEAD
+[0.2.0]: /../compare/v0.1.0...v0.2.0

@@ -11,7 +11,8 @@ Models including the `UUIDParameter` module will:
 
 ### Features
 
-- Can be used with existing models (simply add a `uuid` column).
+- Can be used with existing models (simply add a `uuid` column): saving the
+  model with `nil` values will provide a new UUID.
 - Does not affect existing primary key.
 - Can accept any valid random UUID (version 4) provided externally.
 - Automatically generates a UUID on `:create` if one is not set.
@@ -19,6 +20,17 @@ Models including the `UUIDParameter` module will:
 - Prevents changing the UUID once set.
 - Silently ignores any attempt at changing a set UUID.
 - Overrides `:to_param` to provide the UUID instead of the primary key.
+
+### Anti-Features
+
+- If the database already contains invalid UUIDv4 data, the affected records
+  will become **impossible to save**: this is to ensure that you can check your
+  referential integrity. You can still force `#reset_uuid!` to bypass this, or
+  use SQL directly in the database. (See #1)
+
+### I18n
+
+Translations are in progress (See #2): specs are therefore failing (on purpose).
 
 ## Usage
 
@@ -71,6 +83,8 @@ $ gem install uuid_parameter
 
 Bug reports and pull requests are welcome on Gitlab at
 https://gitlab.com/incommon.cc/uuid_parameter.
+
+See [ChangeLog](../CHANGELOG.md) and commit messages.
 
 The [Github repository] is a mirror to facilitate integration with other Rails
 development, but I don't like Microsoft, and never will. They may show the face

@@ -1,0 +1,4 @@
+fr:
+  errors:
+    messages:
+      not_a_uuid_v4: "doit être un UUID aléatoire (v4)"

@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'uuid_parameter/uuid_version4_validator'
-
 # TODO: move this to the right place... But where?
 I18n.load_path << File.expand_path("locale/en.yml", __dir__)
 
@@ -37,7 +35,10 @@ module UUIDParameter
   UUID_V4_REGEX = %r[\A[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[0-9a-f]{4}-[0-9a-f]{12}\z]
 
   included do
-    validates_with UUIDVersion4Validator
+    validates :uuid,
+              presence: true,
+              uniqueness: true,
+              format: { with: UUID_V4_REGEX, message: :not_a_uuid_v4 }
 
     before_validation :assign_uuid
     before_save :recover_uuid
