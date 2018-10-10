@@ -2,20 +2,20 @@ require "spec_helper"
 
 describe UUIDParameter do
   let (:user_uuid)  { '8bb96d58-2efd-45df-833b-119971a19fea' }
-  let (:user)       { User.new }
+  let (:other_uuid) { '8bb27724-7439-4965-9598-883419179b21' }
 
   it "generates a UUID for a new record" do
+    user = User.new
     expect(user).to be_new_record
     expect(user.uuid).to be_nil
     expect(user.save).to be true
-    expect(user.uuid).not_to be_nil
+    expect(user.reload.uuid).not_to be_nil
   end
 
-  it "keeps existing UUID intact" do
-    expect(user).to be_new_record
-    user.uuid = user_uuid
-    expect(user.save).to be true
-    expect(user.uuid).to eql(user_uuid)
+  it "keeps pre-assigned UUID intact (and silently ignores the change)" do
+    user = User.create(uuid: user_uuid)
+    expect(user.update_attribute(:uuid, other_uuid)).to be true
+    expect(user.reload.uuid).to eql(user_uuid)
   end
 
   it "parameterizes model with UUID" do
@@ -52,5 +52,39 @@ describe UUIDParameter::UUIDVersion4Validator do
     user.uuid = user_uuid
     expect(user.save).to be true
     expect(user.uuid).to eql(other_uuid)
+  end
+
+  describe 'dealing with wrong records' do
+    it 'assigns a valid uuid if the uuid is NULL in database' do
+      user = User.create(uuid: user_uuid)
+      expect(user.uuid).to eql(user_uuid)
+      sql = "UPDATE users SET uuid = null WHERE users.id = #{user.id}"
+      ActiveRecord::Base.connection.execute(sql)
+      expect(user.reload.uuid).to be_nil
+      expect(user.save).to be true
+      expect(user.reload.uuid).not_to be_nil
+      # sadly we cannot recover original UUID from this
+      expect(user.uuid).not_to eql(user_uuid)
+    end
+    it 'provides an i18n error message for invalid UUID' do
+      sql = "INSERT INTO users (uuid) VALUES ('#{fake_uuid}')"
+      ActiveRecord::Base.connection.execute(sql)
+      user = User.last
+      expect(user.uuid).to eql(fake_uuid)
+      expect(user).not_to be_valid
+      expect(user.errors.details[:uuid].first[:error]).to be :not_a_uuid_v4
+      expect(I18n.t('errors.messages.not_a_uuid_v4')).to eq('must be a random UUID (v4)')
+    end
+    it 'raises error if the uuid is invalid in database' do
+      user = User.create(uuid: user_uuid)
+      expect(user.uuid).to eql(user_uuid)
+      [nil_uuid, fake_uuid].each do |invalid|
+        sql = "UPDATE users SET uuid = '#{invalid}' WHERE users.id = #{user.id}"
+        ActiveRecord::Base.connection.execute(sql)
+        expect(user.reload).not_to be_valid
+        expect(user.save).to be false
+        expect { user.save! }.to raise_error(ActiveRecord::RecordInvalid)
+      end
+    end
   end
 end
