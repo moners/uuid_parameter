@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - fix I18n
 
-## 0.2.0 - 2018-10-10
+## [0.2.0] - 2018-10-10
 
 - Fix bug when existing records had NULL values
 - Refactor out the validator class to simplify code
