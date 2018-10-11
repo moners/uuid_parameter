@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.description = "UUIDParameter handles a :uuid column and validation for any model."
   s.license     = "MIT"
 
-  s.files = Dir["{app,config,db,lib}/**/*", "LICENSE", "Rakefile", "README.md"]
+  s.files = Dir["{config,lib}/**/*", "LICENSE", "Rakefile", "README.md"]
 
   s.add_dependency "rails", "~> 5.2.1"
 

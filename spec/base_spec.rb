@@ -73,8 +73,7 @@ describe UUIDParameter do
         expect(user.uuid).to eql(fake_uuid)
         expect(user).not_to be_valid
         # TODO: fix this when we figured out the I18n
-        # expect(user.errors.details[:uuid].first.error).to eq(:not_a_uuid_v4)
-        expect(user.errors).to eq(:not_a_uuid_v4)
+        expect(user.errors.details[:uuid].first[:error]).to eq(:invalid_random_uuid)
       end
       it 'raises error if the uuid is invalid in database' do
         user = User.create(uuid: user_uuid)
@@ -91,14 +90,14 @@ describe UUIDParameter do
 
     describe 'translations' do
       it 'speaks 2 languages' do
-        expect(I18n.available_locales).to eq([:en, :fr])
+        expect(I18n.available_locales.size).to eq(2)
       end
       it 'speaks English' do
         I18n.locale = :en
         expect(I18n.t('errors.messages.not_a_uuid_v4')).to eq('must be a random UUID (v4)')
       end
       it 'parle français' do
-        I18n.locale = :en
+        I18n.locale = :fr
         expect(I18n.t('errors.messages.not_a_uuid_v4')).to eq('doit être un UUID aléatoire (v4)')
       end
     end

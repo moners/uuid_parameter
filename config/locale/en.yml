@@ -1,0 +1,18 @@
+en:
+  errors:
+    messages:
+      not_a_uuid_v4: "must be a random UUID (v4)"
+  activerecord:
+    errors:
+      models:
+        attributes:
+          uuid:
+            not_a_uuid_v4: 'not a UUID v4'
+    attributes:
+      user:
+        uuid: 'UUIDv4'
+    errors:
+      user:
+        attributes:
+          uuid:
+            not_a_uuid_v4: 'LAAAAAAAAAAAAAAAAAA in uuid_parameter/locale'

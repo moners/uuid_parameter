@@ -1,4 +1,0 @@
-en:
-  errors:
-    messages:
-      not_a_uuid_v4: "must be a random UUID (v4)"
