@@ -30,7 +30,9 @@ Models including the `UUIDParameter` module will:
 
 ### I18n
 
-Translations are in progress (See #2): specs are therefore failing (on purpose).
+Translations are in progress (See #2): specs are now passing thanks to a hack.
+To add a new translation, please edit or create the corresponding file in
+[`config/locale`](../config/locale).
 
 ## Usage
 
@@ -104,6 +106,8 @@ release a new version, update the version number in `version.rb`, and then run
 git commits and tags, and push the `.gem` file to
 [rubygems.org](https://rubygems.org).
 See `bundle exec rake -T` for more options.
+
+You can now use `bin/console` to get a nice `Pry` console for development.
 
 ## License
 
