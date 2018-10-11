@@ -32,7 +32,12 @@ Models including the `UUIDParameter` module will:
 
 Translations are in progress (See #2): specs are now passing thanks to a hack.
 To add a new translation, please edit or create the corresponding file in
-[`config/locale`](../tree/master/config/locale).
+[`config/locale`](../../tree/master/config/locale).
+
+testing path:
+- [up one](../config/locale)
+- [up two](../../config/locale)
+- [absolute](https://gitlab.com/incommon.cc/uuid_parameter/tree/master/config/locale)
 
 ## Usage
 
