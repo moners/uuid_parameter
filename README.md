@@ -34,13 +34,6 @@ Translations are in progress (See #2): specs are now passing thanks to a hack.
 To add a new translation, please edit or create the corresponding file in
 [`config/locale`](https://gitlab.com/incommon.cc/uuid_parameter/tree/master/config/locale).
 
-testing path:
-- [up one](../config/locale)
-- [up two](../../config/locale)
-- [/up one](/../config/locale)
-- [/up two](/../../config/locale)
-- [absolute](https://gitlab.com/incommon.cc/uuid_parameter/tree/master/config/locale)
-
 ## Usage
 
 Add a `uuid` column to your model if it does not have one already:
@@ -93,13 +86,14 @@ $ gem install uuid_parameter
 Bug reports and pull requests are welcome on Gitlab at
 https://gitlab.com/incommon.cc/uuid_parameter.
 
-See [ChangeLog](../CHANGELOG.md) and commit messages.
+See [ChangeLog] and commit messages.
 
 The [Github repository] is a mirror to facilitate integration with other Rails
 development, but I don't like Microsoft, and never will. They may show the face
 they like, they come from enemity and, as far as I'm concerned, will remain
 there.
 
+[ChangeLog]: https://gitlab.com/incommon.cc/uuid_parameter/blob/master/CHANGELOG.md
 [Github repository]: https://github.com/moners/uuid_parameter
 
 # Development
