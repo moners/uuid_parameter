@@ -8,7 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-Nothing yet. Maybe open an issue?
+<!-- Nothing yet. Maybe open an issue? -->
+
+- Make Gitlab/Github links **not** relative since Gitlab is smarter about them,
+  but Github plagues users with broken links
 
 ## [0.2.1] - 2018-10-12
 
@@ -30,6 +33,6 @@ Initial release.
 [CHANGELOG.md]: ./CHANGELOG.md
 [LICENSE]: ./LICENSE
 [README.md]: ./README.md
-[Unreleased]: /../compare/v0.2.1...HEAD
-[0.2.1]: /../compare/v0.2.0...v0.2.1
-[0.2.0]: /../compare/v0.1.0...v0.2.0
+[Unreleased]: ../compare/v0.2.1...HEAD
+[0.2.1]: /../../compare/v0.2.0...v0.2.1
+[0.2.0]: https://gitlab.com/incommon.cc/uuid_parameter/compare/v0.1.0...v0.2.0
