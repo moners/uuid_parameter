@@ -8,14 +8,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-- fix I18n
+Nothing yet. Maybe open an issue?
 
-## [0.2.0] - 2018-10-10
+## [0.2.0] - 2018-10-12
 
 - Fix bug when existing records had NULL values
 - Refactor out the validator class to simplify code
 - Make specifications clearer
-- Prepare for I18n
+- Prepare for I18n (now working but rightly put in code, see #2)
+- Released an alpha version 2 days ago to test I18n...
 
 ## 0.1.0 - 2018-09-19
 
