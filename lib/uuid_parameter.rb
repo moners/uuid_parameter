@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # TODO: move this to the right place... But where?
-I18n.load_path << File.expand_path("locale/en.yml", __dir__)
+I18n.load_path += Dir[File.join(__dir__, '../config/locale/*.yml')]
 
 # == UUIDParameter
 #
@@ -28,43 +28,6 @@ I18n.load_path << File.expand_path("locale/en.yml", __dir__)
 # user.reload.uuid  # => '8bb96d58-2efd-45df-833b-119971a19fea' (unchanged)
 # user.to_param     # => '8bb96d58-2efd-45df-833b-119971a19fea'
 #
-module UUIDParameter
-  extend ActiveSupport::Concern
 
-  # Note the static '4' in the third group: that's the UUID version.
-  UUID_V4_REGEX = %r[\A[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[0-9a-f]{4}-[0-9a-f]{12}\z]
-
-  included do
-    validates :uuid,
-              presence: true,
-              uniqueness: true,
-              format: { with: UUID_V4_REGEX, message: :not_a_uuid_v4 }
-
-    before_validation :assign_uuid
-    before_save :recover_uuid
-
-    def to_param
-      uuid.to_s
-    end
-
-    private
-
-    def assign_uuid
-      self.uuid ||= SecureRandom.uuid
-    end
-
-    def existing_uuid_changed?
-      !new_record? && !uuid_was.nil? && uuid_changed?
-    end
-
-    def recover_uuid
-      self.uuid = uuid_was if existing_uuid_changed?
-      reset_uuid! unless UUID_V4_REGEX.match?(self.uuid)
-    end
-
-    def reset_uuid!
-      self.uuid = nil
-      assign_uuid
-    end
-  end
-end
+require 'uuid_parameter/railtie'
+require 'uuid_parameter/concern'
