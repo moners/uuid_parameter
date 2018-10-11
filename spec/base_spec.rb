@@ -94,11 +94,11 @@ describe UUIDParameter do
       end
       it 'speaks English' do
         I18n.locale = :en
-        expect(I18n.t('errors.messages.not_a_uuid_v4')).to eq('must be a random UUID (v4)')
+        expect(I18n.t('activerecord.errors.models.attributes.uuid.invalid_random_uuid')).to eq('must be a random UUID (v4)')
       end
       it 'parle français' do
         I18n.locale = :fr
-        expect(I18n.t('errors.messages.not_a_uuid_v4')).to eq('doit être un UUID aléatoire (v4)')
+        expect(I18n.t('activerecord.errors.models.attributes.uuid.invalid_random_uuid')).to eq('doit être un UUID aléatoire (v4)')
       end
     end
   end

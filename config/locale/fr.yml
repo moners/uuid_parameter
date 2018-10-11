@@ -1,4 +1,7 @@
 fr:
-  errors:
-    messages:
-      not_a_uuid_v4: "doit être un UUID aléatoire (v4)"
+  activerecord:
+    errors:
+      models:
+        attributes:
+          uuid:
+            invalid_random_uuid: "doit être un UUID aléatoire (v4)"
