@@ -10,6 +10,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Nothing yet. Maybe open an issue?
 
+## [0.2.1] - 2018-10-12
+
+- Fix locale files
+- Fix link in [README.md]
+
 ## [0.2.0] - 2018-10-12
 
 - Fix bug when existing records had NULL values
@@ -24,5 +29,7 @@ Initial release.
 
 [CHANGELOG.md]: ./CHANGELOG.md
 [LICENSE]: ./LICENSE
-[Unreleased]: /../compare/v0.2.0...HEAD
+[README.md]: ./README.md
+[Unreleased]: /../compare/v0.2.1...HEAD
+[0.2.1]: /../compare/v0.2.0...v0.2.1
 [0.2.0]: /../compare/v0.1.0...v0.2.0
