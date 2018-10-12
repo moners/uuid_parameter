@@ -10,6 +10,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Nothing yet. Maybe open an issue?
 
+## [0.2.3] - 2018-10-13
+
+- Fix I18n error message key and use of `I18n.t`  
+  The translation key is now: `activemodel.errors.messages.invalid_random_uuid`.
+
 ## [0.2.2] - 2018-10-12
 
 - No functionality change
@@ -37,7 +42,8 @@ Initial release.
 [CHANGELOG.md]: ./CHANGELOG.md
 [LICENSE]: ./LICENSE
 [README.md]: ./README.md
-[Unreleased]: https://gitlab.com/incommon.cc/uuid_parameter/compare/v0.2.2...HEAD
+[Unreleased]: https://gitlab.com/incommon.cc/uuid_parameter/compare/v0.2.3...HEAD
+[0.2.3]: https://gitlab.com/incommon.cc/uuid_parameter/compare/v0.2.2...v0.2.3
 [0.2.2]: https://gitlab.com/incommon.cc/uuid_parameter/compare/v0.2.1...v0.2.2
 [0.2.1]: https://gitlab.com/incommon.cc/uuid_parameter/compare/v0.2.0...v0.2.1
 [0.2.0]: https://gitlab.com/incommon.cc/uuid_parameter/compare/v0.1.0...v0.2.0
