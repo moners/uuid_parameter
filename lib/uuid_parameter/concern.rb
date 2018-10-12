@@ -12,7 +12,6 @@ module UUIDParameter
     validates :uuid,
               presence: true,
               uniqueness: true,
-              # format: { with: UUID_V4_REGEX, message: :not_a_uuid_v4 }
               with: :uuid4_validator
     
 
@@ -44,7 +43,7 @@ module UUIDParameter
     end
 
     def uuid4_validator
-      errors.add(:uuid, :invalid_random_uuid, message: :not_a_uuid_v4) unless uuid =~ UUID_V4_REGEX
+      errors.add(:uuid, :invalid_random_uuid) unless uuid =~ UUID_V4_REGEX
     end
   end
 end

@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-# TODO: move this to the right place... But where?
-I18n.load_path += Dir[File.join(__dir__, '../config/locale/*.yml')]
-
 # == UUIDParameter
 #
 # UUIDParameter module provides support for UUIDs in models.  It takes care of
@@ -28,6 +25,9 @@ I18n.load_path += Dir[File.join(__dir__, '../config/locale/*.yml')]
 # user.reload.uuid  # => '8bb96d58-2efd-45df-833b-119971a19fea' (unchanged)
 # user.to_param     # => '8bb96d58-2efd-45df-833b-119971a19fea'
 #
+
+# TODO: #2 move this to the right place... But where?
+I18n.load_path += Dir[File.join(__dir__, '../config/locale/*.yml')]
 
 require 'uuid_parameter/railtie'
 require 'uuid_parameter/concern'

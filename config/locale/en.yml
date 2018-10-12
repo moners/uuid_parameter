@@ -1,7 +1,5 @@
 en:
-  activerecord:
+  activemodel:
     errors:
-      models:
-        attributes:
-          uuid:
-            invalid_random_uuid: "must be a random UUID (v4)"
+      messages:
+        invalid_random_uuid: "must be a random UUID (v4)"
