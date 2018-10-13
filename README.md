@@ -7,7 +7,9 @@ this UUID intact, protecting the `:uuid` field from being changed once set.
 
 Models including the `UUIDParameter` module will:
 - use their `:uuid` rather than their `:id` (primary key) for URLs.
-- accept an given UUID on creation to allow offline resource generation.
+- accept a given UUID on creation to allow offline resource generation.
+
+[![Code Climate](https://codeclimate.com/github/codeclimate/codeclimate/badges/gpa.svg)](https://codeclimate.com/github/moners/uuid_parameter)
 
 ### Features
 
